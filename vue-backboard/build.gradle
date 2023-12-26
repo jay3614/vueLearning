@@ -1,0 +1,47 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '2.7.11'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	//security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'javax.validation:validation-api:2.0.1.Final'
+	implementation 'com.auth0:java-jwt:3.14.0'
+	// JJWT 웹토큰 의존성 추가
+	//implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.2'
+	//runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.2'
+	//runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.2'
+	//
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
