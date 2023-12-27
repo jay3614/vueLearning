@@ -24,3 +24,12 @@
 - **관리**
   - `Github`
   
+<br>
+
+# subtree 커밋
+1. 하위 레포지토리에서 변경사항 커밋
+2. 상위 레포지토리가 있는 저장소로 가서 git bash 열고 subtree 업데이트
+  - git subtree pull --prefix=(하위레포지토리 이름) (하위 레포지토리 url) main
+3. 상위 레포지토리에 변경 사항 push
+  - git push origin main
+  - push가 잘 안되면 --force 붙이기
