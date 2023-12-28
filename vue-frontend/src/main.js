@@ -8,6 +8,12 @@ import axios from './utils/axios'
 import router from './router'
 import store from './vuex/store'
 
+import '../src/assets/css/main.css'
+import '../src/assets/css/util.css'
+import '../src/assets/css/myCustom.css'
+// import 'bootstrap'
+// import 'bootstrap/dist/css/bootstrap.min.css'
+
 const app = createApp(App)
 app.config.globalProperties.$axios = axios;
 app.config.globalProperties.$serverUrl = '//localhost:8082'
