@@ -1,18 +1,24 @@
 <template>
     <div class="home">
       <img alt="Vue logo" src="../assets/logo.png">
-      <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <hr>
+      <ProjectLink1 /><hr>
+      <ProjectLink2 /><hr>
+      <ProjectLink3 />
     </div>
   </template>
   
   <script>
-  // @ is an alias to /src
-  import HelloWorld from '@/components/HelloWorld.vue'
+  import ProjectLink1 from '@/components/ProjectLink1.vue'
+  import ProjectLink2 from '@/components/ProjectLink2.vue'
+  import ProjectLink3 from '@/components/ProjectLink3.vue'
   
   export default {
     name: 'PageHome',
     components: {
-      HelloWorld
+      ProjectLink1,
+      ProjectLink2,
+      ProjectLink3
     }
   }
   </script>
