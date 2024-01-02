@@ -6,7 +6,7 @@
         <li>
           <a href="https://github.com/jay3614/facebook" target="_blank">
             <div class="screen">
-              <div class="top">쇼핑몰 프로젝트</div>
+              <div class="top">페이스북 제작 프로젝트</div>
               <div class="bottom">클릭 시 github 주소로 이동</div>
               <img src="../../public/images/facebook.jpg">
             </div>
