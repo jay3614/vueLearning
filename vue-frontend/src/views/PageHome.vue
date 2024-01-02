@@ -1,7 +1,5 @@
 <template>
     <div class="home">
-      <img alt="Vue logo" src="../assets/logo.png">
-      <hr>
       <ProjectLink1 /><hr>
       <ProjectLink2 /><hr>
       <ProjectLink3 />

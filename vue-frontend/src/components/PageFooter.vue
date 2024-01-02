@@ -1,6 +1,6 @@
 <template>
     <hr/>
-    <footer class="footer bg3 p-t-65 p-b-75">   <!-- bg-3 p-t-65 p-b-75 -->
+    <footer class="footer bg3 p-t-65 p-b-75">
       <div class="container">
         <div>
           <div class="footer_info">
