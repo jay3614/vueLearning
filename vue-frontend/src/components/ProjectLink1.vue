@@ -10,9 +10,6 @@
               <div class="bottom">클릭 시 github 주소로 이동</div>
               <img src="../../public/images/shoppingMall.jpg">
             </div>
-            <div>
-              <h3>이미지 위에 오브젝트가 나타나는 효과</h3>
-            </div>
           </a>
         </li>
       </ul>
