@@ -6,7 +6,7 @@
         <li>
           <a href="https://github.com/jay3614/jspGameSite" target="_blank">
             <div class="screen">
-              <div class="top">쇼핑몰 프로젝트</div>
+              <div class="top">게임 사이트 제작 프로젝트</div>
               <div class="bottom">클릭 시 github 주소로 이동</div>
               <img src="../../public/images/jspGameSite.jpg">
             </div>
