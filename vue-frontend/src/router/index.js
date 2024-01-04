@@ -4,6 +4,7 @@ import BoardList from '@/views/board/BoardList.vue'
 import BoardDetail from '@/views/board/BoardDetail.vue'
 import BoardWrite from '@/views/board/BoardWrite.vue'
 import LoginView from '@/views/common/LoginView.vue'
+import RegisterForm from '@/views/common/RegisterForm.vue'
 import store from "@/vuex/store";
 
 const requireAuth = () => (from, to, next) => {   // never read라고 뜨지만 로그인 시 필요함
@@ -49,6 +50,11 @@ const routes = [
     path: '/login',
     name: 'LoginView',
     component: LoginView
+  },
+  {
+    path: '/register',
+    name: 'RegisterForm',
+    component: RegisterForm
   },
 ]
 

@@ -6,14 +6,6 @@ const getUserInfo = (userId, userPw) => {
     'user_pw': userPw
   }
 
-  // return {
-  //   'data': {
-  //     'user_id': reqData.user_id,
-  //     'user_token': 'user_test_token',
-  //     'user_role': 'ADM'
-  //   }
-  // }
-
   let serverUrl = '//localhost:8082'
 
   return axios.post(serverUrl + '/user/login', reqData, {

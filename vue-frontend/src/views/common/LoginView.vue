@@ -1,7 +1,7 @@
 <template>
     <div>
       <div>
-        <h2>Please Log In</h2>
+        <h2>로그인</h2>
         <div id="loginForm">
           <form @submit.prevent="fnLogin">
             <p>
@@ -10,7 +10,7 @@
             <p>
               <input name="password" class="w3-input" placeholder="Enter your password" v-model="user_pw" type="password">
             </p>
-            <p>
+            <p class="p-t-20">
               <button type="submit" class="w3-button w3-green w3-round">Login</button>
             </p>
           </form>
@@ -46,7 +46,6 @@
         try {
           let loginResult = await this.login({user_id: this.user_id, user_pw: this.user_pw})
           if (loginResult) {
-            // alert('로그인 결과 : ' + loginResult)
             this.goToPages()
           }
         } catch (err) {
