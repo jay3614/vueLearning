@@ -8,7 +8,7 @@
             <div class="screen">
               <div class="top">페이스북 제작 프로젝트</div>
               <div class="bottom">클릭 시 github 주소로 이동</div>
-              <img src="../../public/images/facebook.jpg">
+              <img src="../../public/images/facebook.jpg" />
             </div>
           </a>
         </li>
@@ -18,7 +18,5 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
