@@ -36,8 +36,6 @@
 </template>
 
 <script>
-import { register } from '@/service/registerAPI'
-
 export default {
   data() {
     return {
@@ -48,50 +46,43 @@ export default {
     }
   },
   methods: {
-    async fnRegister() {
+    fnRegister() {
       if (this.user_id === '') {
         this.active.user_id = true
-        alert('ID를 입력하세요.');
+        alert('ID를 입력하세요.')
         return
       }
       if (this.user_pw === '') {
         this.active.user_pw = true
-        alert('비밀번호를 입력하세요.');
+        alert('비밀번호를 입력하세요.')
         return
       }
       if (this.user_name === '') {
         this.active.user_name = true
-        alert('이름을 입력하세요.');
+        alert('이름을 입력하세요.')
         return
       }
+
+      let apiUrl = this.$serverUrl + '/register'
       
       this.form = {
-        "userId": this.user_id,
-        "userName": this.user_name,
-        "userPw": this.user_pw
+        "user_id": this.user_id,
+        "user_name": this.user_name,
+        "user_pw": this.user_pw
       }
 
-      try {
-        const response = await register(this.form);
-        
-        if(response.status == 200) {
-          alert('환영합니다.');
-          this.$router.push('/login');
-        }else {
-          alert(response.data);
-        }
-      } catch(err) {
-        // 이미 userId가 존재할 경우
-        if(err.response && err.response.status == 400 && err.response.data === "이미 존재하는 아이디 입니다.") {
-          alert('이미 존재하는 아이디입니다.');
-          location.reload();
-        }else {
-          console.error(err);
-          alert('회원가입에 실패했습니다.');
-          location.reload();
-        }
+      if (this.user_id2 === undefined) {
+        this.$axios.post(apiUrl, this.form)
+        .then(        // 여기로 넘어가는데 백엔드쪽에서 토큰 에러 메세지가 뜸
+          alert('회원가입 되었습니다.')
+        ).catch((err) => {
+          if (err.message.indexOf('Network Error') > -1) {
+            alert('네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.')
+          }
+        })
+      } else {
+        alert('이미 존재하는 아이디 입니다.')
       }
-
     }
   }
 }
