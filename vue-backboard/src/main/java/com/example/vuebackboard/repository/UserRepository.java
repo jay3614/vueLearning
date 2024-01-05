@@ -8,4 +8,6 @@ import com.example.vuebackboard.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	Optional<UserEntity> findByUserId(String userId);
+	
+	Boolean existsByUserId(String userId);
 }

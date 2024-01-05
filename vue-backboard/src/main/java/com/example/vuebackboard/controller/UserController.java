@@ -1,5 +1,7 @@
 package com.example.vuebackboard.controller;
 
+import com.example.vuebackboard.dto.UserDTO;
+import com.example.vuebackboard.entity.UserEntity;
 import com.example.vuebackboard.service.UserService;
 import com.example.vuebackboard.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -44,5 +46,15 @@ public class UserController {
         result.put("user_role", loginUser.getAuthorities().stream().findFirst().get().getAuthority());
 
         return ResponseEntity.ok(result);
+    }
+    
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody UserDTO userDTO) {
+        try {
+            userService.register(userDTO);
+            return ResponseEntity.ok("회원가입이 성공적으로 완료되었습니다.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body("이미 존재하는 아이디 입니다.");
+        }
     }
 }
