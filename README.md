@@ -26,6 +26,20 @@
   
 <br>
 
+# 필수 설치 리스트
+1. node.js
+   - node -v
+2. vue cli
+   - npm i -g @vue/cli
+3. vue-router
+   - npm i --save vue-router
+4. axios
+   - npm i --save axios
+5. vuex
+   - npm i vuex
+
+<br>
+
 # subtree 커밋
 1. 하위 레포지토리에서 변경사항 커밋
 2. 상위 레포지토리가 있는 저장소로 가서 git bash 열고 subtree 업데이트
