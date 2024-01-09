@@ -8,6 +8,28 @@
 	letter-spacing: -0.03em;
 }
 
+/* #wrapper{
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 302px;
+} */
+
+/* footer{
+	height: 302px;
+	position : relative;
+	transform : translateY(100%);
+} */
+
+#wrapper{
+	min-height: 100%;
+	position: relative;
+}
+
+footer{
+  position: relative; (absolute -> relative)
+	transform: translateY(-100%);
+}
+
 /* [footer 섹션 css] */
 .footer {
     text-align: left;

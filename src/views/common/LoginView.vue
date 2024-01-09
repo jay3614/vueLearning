@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="wrapper">
     <div>
       <h2>로그인</h2>
       <div id="loginForm">
@@ -26,11 +26,23 @@
             />
           </p>
           <p class="p-t-20">
-            <button type="submit" class="w3-button w3-green w3-round">
+            <button type="submit" class="w-full w3-button w3-green w3-round">
               Login
             </button>
           </p>
         </form>
+        <div class="p-t-20">
+          <ul class="flex-c">
+            <li class="float-l login_btn"><router-link to="/register">회원가입</router-link></li>
+            <p class="float-l">|</p>
+            <li class="float-l login_btn">
+              <router-link to="/findID">ID 찾기</router-link>
+              <!-- <a href="javascript:void(window.open('주소', '_blank','width=#, height=#'))"></a> -->
+            </li>
+            <p class="float-l">|</p>
+            <li class="float-l login_btn">비밀번호 찾기</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -107,5 +119,11 @@ export default {
 
 .active {
   background-color: blanchedalmond;
+}
+
+.login_btn {
+  width: 30%;
+  font-size: 18px;
+  
 }
 </style>

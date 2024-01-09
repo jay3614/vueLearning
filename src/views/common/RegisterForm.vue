@@ -17,6 +17,21 @@
       </div>
 
       <div class="row">
+        <div class="left">이메일</div>
+        <div class="right">
+          <input
+            type="text"
+            class="w-full"
+            :class="{ active: active.user_email }"
+            name="user_email"
+            v-model="user_email"
+            placeholder="aaaa123@aaaa.com"
+            @input="resetActive('user_email')"
+          />
+        </div>
+      </div>
+
+      <div class="row">
         <div class="left">이름</div>
         <div class="right">
           <input
@@ -61,17 +76,24 @@ export default {
   data() {
     return {
       user_id: "",
+      user_email: "",
       user_name: "",
       user_pw: "",
-      active: { user_id: false, user_name: false, user_pw: false },
+      active: { user_id: false, user_email: false, user_name: false, user_pw: false },
     };
   },
   methods: {
     async fnRegister() {
       if (this.user_id === "") {
         // 아이디 검사
-        this.active.user_id = true;
+        this.active.user_id = true;   // 입력칸 빈칸으로 제출 시 div 색 변환
         alert("ID를 입력하세요.");
+        return;
+      }
+      if (this.user_email === "") {
+        // 이메일 검사
+        this.active.user_email = true;
+        alert("이메일을 입력하세요.");
         return;
       }
       if (this.user_pw === "") {
@@ -87,8 +109,16 @@ export default {
         return;
       }
 
+      // 이메일 양식 검사
+      const patten = /^[A-Za-z0-9_.-]+@[A-Za-z0-9-]+\.[A-Za-z0-9-]+/;
+      if (!patten.test(this.user_email)) {
+        alert("이메일 주소는 example@example.com 형식으로 정확히 입력해주세요.");
+        return;
+      }
+
       this.form = {
         userId: this.user_id,
+        userEmail: this.user_email,
         userName: this.user_name,
         userPw: this.user_pw,
       };
@@ -119,6 +149,7 @@ export default {
         }
       }
     },
+    // 글자 입력 시 div 색 변환 해제
     resetActive(field) {
       this.active[field] = false;
     },
