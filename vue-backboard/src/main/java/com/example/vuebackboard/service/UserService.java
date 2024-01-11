@@ -56,9 +56,22 @@ public class UserService implements UserDetailsService {
     	
     	UserEntity entity = UserEntity.builder()
                 .userId(userDTO.getUserId())
+                .userEmail(userDTO.getUserEmail())
                 .userName(userDTO.getUserName())
                 .userPw(encPassword)
                 .build();
         return userRepository.save(entity);
+    }
+    
+    // ID 찾기
+    public String findId(UserDTO userDTO) {
+    	String userId = userRepository.findIdByEmailAndName(userDTO.getUserEmail(), userDTO.getUserName());
+    	
+    	return userId;
+    }
+    
+    // pw 찾기
+    public void findPw(UserDTO userDTO) {
+    	
     }
 }

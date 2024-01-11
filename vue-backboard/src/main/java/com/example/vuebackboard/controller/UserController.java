@@ -1,7 +1,6 @@
 package com.example.vuebackboard.controller;
 
 import com.example.vuebackboard.dto.UserDTO;
-import com.example.vuebackboard.entity.UserEntity;
 import com.example.vuebackboard.service.UserService;
 import com.example.vuebackboard.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +24,7 @@ public class UserController {
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
 
+    // 로그인
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, String> paramMap) {
         String userId = paramMap.get("user_id");
@@ -48,6 +48,7 @@ public class UserController {
         return ResponseEntity.ok(result);
     }
     
+    // 회원가입
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody UserDTO userDTO) {
         try {
@@ -56,5 +57,42 @@ public class UserController {
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body("이미 존재하는 아이디 입니다.");
         }
+    }
+    
+    // ID 찾기
+    @PostMapping("/findId")
+    public ResponseEntity<Map<String, Object>> findId(@RequestBody UserDTO userDTO) {
+    	try {
+    		String userId = userService.findId(userDTO);
+    		
+    		Map<String, Object> result = new HashMap<>();
+            result.put("user_id", userId);
+            
+            System.out.println("++++++++++++++++++");
+            System.out.println(userId);
+            System.out.println("++++++++++++++++++");
+            
+    		return ResponseEntity.ok().body(result);
+    	} catch (RuntimeException e) {
+    		e.getStackTrace();
+    		e.getMessage();
+    		return null;
+    	}
+    }
+    
+    // 비밀번호 찾기
+    @PostMapping("/findPw")
+    public ResponseEntity<String> findPw(@RequestBody UserDTO userDTO) {
+    	try {
+    		userService.findPw(userDTO);
+
+    		//
+    		
+    		return ResponseEntity.ok("가입하신 이메일로 임시 비밀번호를 전송하였습니다.");
+    	} catch (RuntimeException e) {
+    		e.getStackTrace();
+    		e.getMessage();
+    		return null;
+    	}
     }
 }

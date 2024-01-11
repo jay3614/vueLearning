@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class UserDTO implements Serializable {
 	private Long idx;
 	private String userId;
+	private String userEmail;
     private String userPw;
     private String userName;
 }
