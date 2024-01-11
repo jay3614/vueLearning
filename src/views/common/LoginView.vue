@@ -33,14 +33,20 @@
         </form>
         <div class="p-t-20">
           <ul class="flex-c">
-            <li class="float-l login_btn"><router-link to="/register">회원가입</router-link></li>
-            <p class="float-l">|</p>
             <li class="float-l login_btn">
-              <router-link to="/findID">ID 찾기</router-link>
-              <!-- <a href="javascript:void(window.open('주소', '_blank','width=#, height=#'))"></a> -->
+              <router-link to="/register">회원가입</router-link>
             </li>
             <p class="float-l">|</p>
-            <li class="float-l login_btn">비밀번호 찾기</li>
+            <li class="float-l login_btn">
+              <!-- <router-link to="/findID">ID 찾기</router-link> -->
+              <!-- <a href="javascript:void(window.open('/findId', '_blank','width=800, height=400'))">ID 찾기</a> -->
+              <a href="javascript:void(window.open('/findId', '_blank','width=800, height=500, top=' + (screen.height/2 - 250) + ', left=' + (screen.width/2 - 400)))">ID 찾기</a>
+            </li>
+            <p class="float-l">|</p>
+            <li class="float-l login_btn">
+              <a href="javascript:void(window.open('/findPw', '_blank','width=800, height=400, top=' + (screen.height/2 - 250) + ', left=' + (screen.width/2 - 400)))">비밀번호 찾기</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -111,7 +117,7 @@ export default {
 };
 </script>
   
-  <style>
+<style>
 #loginForm {
   width: 500px;
   margin: auto;
@@ -124,6 +130,5 @@ export default {
 .login_btn {
   width: 30%;
   font-size: 18px;
-  
 }
 </style>

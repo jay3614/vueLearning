@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-c">
+  <div class="d-flex flex-c p-t-100">
     <div>
       <h3 class="p-b-20">아이디 찾기를 위한 이름과 이메일을 입력해주세요.</h3>
       <div class="row">
@@ -49,10 +49,10 @@ export default {
     return {
       user_name: "",
       user_email: "",
-      active: { 
+      active: {
         user_name: false,
-        user_email: false
-       },
+        user_email: false,
+      },
     };
   },
   methods: {
@@ -63,17 +63,17 @@ export default {
         return;
       }
 
-      this.form = { 
+      this.form = {
         userName: this.user_name,
-        userEmail: this.user_email
-       };
+        userEmail: this.user_email,
+      };
 
       try {
         const response = await findId(this.form);
 
         // 아이디 찾기에 성공했을 경우
         if (response.status == 200) {
-          alert("고객님의 아이디는 " + 'asdf' + " 입니다.");
+          alert("고객님의 아이디는 " + "asdf" + " 입니다.");
           this.$router.push("/login");
         } else {
           alert(response.data);

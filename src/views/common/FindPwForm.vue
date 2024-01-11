@@ -1,7 +1,9 @@
 <template>
-  <div class="d-flex flex-c">
+  <div class="d-flex flex-c p-t-100">
     <div>
-      <h3 class="p-b-20">아이디 찾기를 위한 이름과 이메일을 입력해주세요.</h3>
+      <h3 class="p-b-20">
+        비밀번호 찾기를 위한 아이디와 이메일을 입력해주세요.
+      </h3>
       <div class="row">
         <div class="left">아이디</div>
         <div class="right">
@@ -49,10 +51,10 @@ export default {
     return {
       user_id: "",
       user_email: "",
-      active: { 
+      active: {
         user_id: false,
-        user_email: false
-       },
+        user_email: false,
+      },
     };
   },
   methods: {

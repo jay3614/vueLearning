@@ -8,6 +8,11 @@
 	letter-spacing: -0.03em;
 }
 
+
+
+
+/* [footer 하단고정 작업중] */
+
 /* #wrapper{
   height: auto;
   min-height: 100%;
@@ -29,6 +34,11 @@ footer{
   position: relative; (absolute -> relative)
 	transform: translateY(-100%);
 }
+
+
+
+
+
 
 /* [footer 섹션 css] */
 .footer {
