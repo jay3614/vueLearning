@@ -39,7 +39,6 @@
             <p class="float-l">|</p>
             <li class="float-l login_btn">
               <!-- <router-link to="/findID">ID 찾기</router-link> -->
-              <!-- <a href="javascript:void(window.open('/findId', '_blank','width=800, height=400'))">ID 찾기</a> -->
               <a href="javascript:void(window.open('/findId', '_blank','width=800, height=500, top=' + (screen.height/2 - 250) + ', left=' + (screen.width/2 - 400)))">ID 찾기</a>
             </li>
             <p class="float-l">|</p>

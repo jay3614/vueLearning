@@ -73,8 +73,9 @@ export default {
 
         // 아이디 찾기에 성공했을 경우
         if (response.status == 200) {
-          alert("고객님의 아이디는 " + "asdf" + " 입니다.");
-          this.$router.push("/login");
+          const userId = response.data.user_id;
+
+          alert("고객님의 아이디는 『" + userId + "』 입니다.");
         } else {
           alert(response.data);
         }
