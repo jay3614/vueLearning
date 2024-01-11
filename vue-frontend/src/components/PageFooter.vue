@@ -1,5 +1,6 @@
 <template>
-    <hr/>
+  <div>
+    <hr />
     <footer class="footer bg3 p-t-65 p-b-75">
       <div class="container">
         <div>
@@ -32,21 +33,25 @@
             </ul>
           </div>
           <div class="footer_info">
-            <p class="stext-107 cl7 ">
-              <br>고객센터: <a href="#">
-                031-123-1234</a>
-              운영시간 평일 11:00 - 18:00 (토∙일, 공휴일 휴무) 점심시간 평일
-              13:00 - 14:00 <br>
+            <p class="stext-107 cl7">
+              <br />고객센터: <a href="#"> 031-123-1234</a> 운영시간 평일 11:00 -
+              18:00 (토∙일, 공휴일 휴무) 점심시간 평일 13:00 - 14:00 <br />
               <b>1:1 문의하기는 게시판을 이용해 주세요</b>
             </p>
-            <p class="rights">© SpringBoot personal project All Rights Reserved</p>
+            <p class="rights">
+              © SpringBoot personal project All Rights Reserved
+            </p>
             <div class="p-t-27">
               <a href="https://github.com/jay3614/vueLearning" target="_blank">
-                <img src="../../public/images/icons/logo2.png" alt="COMPANY-LOGO">
+                <img
+                  src="../../public/images/icons/logo2.png"
+                  alt="COMPANY-LOGO"
+                />
               </a>
             </div>
           </div>
         </div>
       </div>
     </footer>
-  </template>
+  </div>
+</template>

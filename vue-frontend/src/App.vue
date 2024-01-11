@@ -1,23 +1,39 @@
 <template>
-  <PageHeader/>
-  <router-view/>
-  <PageFooter/>
+  <PageHeader v-if="!hideHeader" />
+  <router-view />
+  <PageFooter v-if="!hideFooter" />
   <LoadingBar :loading="this.$store.state.loadingStatus"></LoadingBar>
 </template>
 
 <script>
-import PageHeader from '@/components/PageHeader'
-import PageFooter from '@/components/PageFooter'
-import LoadingBar from '@/views/common/LoadingBar'
+import PageHeader from "@/components/PageHeader";
+import PageFooter from "@/components/PageFooter";
+import LoadingBar from "@/views/common/LoadingBar";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     PageFooter,
     PageHeader,
-    LoadingBar
-  }
-}
+    LoadingBar,
+  },
+  data() {
+    return {
+      hideHeader: false,
+      hideFooter: false,
+    };
+  },
+  created() {
+    // findId와 findPw인 경우엔 header와 footer 없애기
+    if (
+      document.location.pathname === "/findId" ||
+      document.location.pathname === "/findPw"
+    ) {
+      this.hideHeader = true;
+      this.hideFooter = true;
+    }
+  },
+};
 </script>
 
 <style>

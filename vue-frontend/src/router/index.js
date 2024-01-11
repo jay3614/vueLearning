@@ -5,10 +5,11 @@ import BoardDetail from '@/views/board/BoardDetail.vue'
 import BoardWrite from '@/views/board/BoardWrite.vue'
 import LoginView from '@/views/common/LoginView.vue'
 import RegisterForm from '@/views/common/RegisterForm.vue'
+import FindIdForm from '@/views/common/FindIdForm.vue'
+import FindPwForm from '@/views/common/FindPwForm.vue'
 import store from "@/vuex/store";
 
 const requireAuth = () => (from, to, next) => {   // never read라고 뜨지만 로그인 시 필요함
-  // const token = localStorage.getItem('user_token')
   const token = sessionStorage.getItem('user_token')
   if (token) {
     store.state.isLogin = true
@@ -55,6 +56,16 @@ const routes = [
     path: '/register',
     name: 'RegisterForm',
     component: RegisterForm
+  },
+  {
+    path: '/findId',
+    name: 'FindIdForm',
+    component: FindIdForm
+  },
+  {
+    path: '/findPw',
+    name: 'FindPwForm',
+    component: FindPwForm
   },
 ]
 

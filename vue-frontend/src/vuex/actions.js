@@ -1,15 +1,15 @@
-import {USER_ID, IS_AUTH, ERROR_STATE} from './mutation_types'
+import { USER_ID, IS_AUTH, ERROR_STATE } from './mutation_types'
 import loginAPI from '../service/loginAPI'
 
-let setUserId = ({commit}, data) => {
+let setUserId = ({ commit }, data) => {
   commit(USER_ID, data)
 }
 
-let setErrorState = ({commit}, data) => {
+let setErrorState = ({ commit }, data) => {
   commit(ERROR_STATE, data)
 }
 
-let setIsAuth = ({commit}, data) => {
+let setIsAuth = ({ commit }, data) => {
   commit(IS_AUTH, data)
 }
 
@@ -29,7 +29,7 @@ let processResponse = (store, loginResponse) => {
 
 
 export default {
-  async login (store, {user_id, user_pw}) {
+  async login(store, { user_id, user_pw }) {
     let loginResponse = await loginAPI.doLogin(user_id, user_pw)
     processResponse(store, loginResponse)
     return store.getters.getIsAuth  // 로그인 결과 리턴
