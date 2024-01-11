@@ -68,10 +68,6 @@ public class UserController {
     		Map<String, Object> result = new HashMap<>();
             result.put("user_id", userId);
             
-            System.out.println("++++++++++++++++++");
-            System.out.println(userId);
-            System.out.println("++++++++++++++++++");
-            
     		return ResponseEntity.ok().body(result);
     	} catch (RuntimeException e) {
     		e.getStackTrace();
