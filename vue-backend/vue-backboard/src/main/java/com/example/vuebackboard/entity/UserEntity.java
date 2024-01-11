@@ -18,6 +18,7 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
     private String userId;
+    private String userEmail;
     private String userPw;
     private String userName;
 }
