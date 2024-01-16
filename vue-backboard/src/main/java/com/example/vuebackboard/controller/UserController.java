@@ -3,7 +3,10 @@ package com.example.vuebackboard.controller;
 import com.example.vuebackboard.dto.UserDTO;
 import com.example.vuebackboard.service.UserService;
 import com.example.vuebackboard.util.JwtUtil;
+
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+@Log4j2
 @RequiredArgsConstructor
 @CrossOrigin
 @RestController
@@ -22,6 +26,7 @@ import java.util.Map;
 public class UserController {
     private final JwtUtil jwtUtil;
     private final UserService userService;
+    
     private final AuthenticationManager authenticationManager;
 
     // 로그인
@@ -78,17 +83,19 @@ public class UserController {
     
     // 비밀번호 찾기
     @PostMapping("/findPw")
-    public ResponseEntity<String> findPw(@RequestBody UserDTO userDTO) {
-    	try {
-    		userService.findPw(userDTO);
-
-    		//
-    		
-    		return ResponseEntity.ok("가입하신 이메일로 임시 비밀번호를 전송하였습니다.");
-    	} catch (RuntimeException e) {
-    		e.getStackTrace();
-    		e.getMessage();
-    		return null;
-    	}
+    public ResponseEntity<?> findPw(@RequestBody UserDTO userDTO) throws Exception {
+    	log.info("요청된 이메일 : " + userDTO.getUserEmail());
+    	
+    	if(!userService.checkEmail(userDTO.getUserEmail())) {
+			return ResponseEntity.badRequest().body("해당 이메일을 사용하는 회원을 찾을 수 없습니다. ");
+		}
+    	
+    	String tmpPassword = userService.getTmpPassword();	// 랜덤의 비밀번호 생성
+		userService.updatePassword(tmpPassword, userDTO.getUserEmail());
+		userService.findPw(tmpPassword, userDTO.getUserEmail());	// 임시 비밀번호 메일로 전송
+		return ResponseEntity.ok("가입하신 이메일로 임시 비밀번호를 전송하였습니다.");
+    	
+//		final UserDTO responseDTO = UserDTO.builder().userEmail(userDTO.getUserEmail()).build();
+//		return ResponseEntity.ok().body(responseDTO);
     }
 }

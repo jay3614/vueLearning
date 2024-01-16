@@ -21,4 +21,8 @@ public class UserEntity {
     private String userEmail;
     private String userPw;
     private String userName;
+    
+    public void updatePassword(String userPw) {
+		this.userPw = userPw;
+	}
 }
