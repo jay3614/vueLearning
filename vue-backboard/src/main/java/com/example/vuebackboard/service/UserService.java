@@ -50,6 +50,7 @@ public class UserService implements UserDetailsService {
         return new User(userEntity.getUserId(), userEntity.getUserPw(), authorities);
     }
     
+    // 회원가입
     public UserEntity register(UserDTO userDTO) {
     	
     	UserEntity id = UserEntity.builder().userId(userDTO.getUserId()).build();
@@ -102,8 +103,11 @@ public class UserService implements UserDetailsService {
  	public void updatePassword(String tmpPassword, String userEmail) {
  		String encryptPassword = passwordEncoder.encode(tmpPassword);
          if(userRepository.findByUserEmail(userEmail) != null) {
+        	 
          	UserEntity user = userRepository.findByUserEmail(userEmail);
          	user.updatePassword(encryptPassword);
+        	userRepository.save(user);
+        	
          	log.info("임시 비밀번호 업데이트 : " + tmpPassword);
          } else {
          	throw new IllegalArgumentException("해당 사용자가 없습니다."); 
@@ -120,6 +124,7 @@ public class UserService implements UserDetailsService {
 		MimeMessage message = javaMailSender.createMimeMessage();
 		
 		UserEntity user = userRepository.findByUserEmail(userEmail);
+		
 		String msg = "";
 		message.addRecipients(RecipientType.TO, userEmail);
 		message.setSubject("[Spring-facebook] 임시 비밀번호 발급 안내");
@@ -239,7 +244,7 @@ public class UserService implements UserDetailsService {
 	    msg+="<td align='center' style='font-size:12px;font-family:Roboto-Regular,Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;color:#8a8d91;text-align:center;font-weight:400;padding-top:6px;padding-bottom:6px'>© Facebook. Meta Platforms, Inc., Attention: Community Support, 1 Facebook Way, Menlo Park, CA 94025</td>";
 	    msg+="</tr>";
 	    msg+="<tr>";
-	    msg+="<td align='center' style='font-size:12px;font-family:Roboto-Regular,Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;color:#8a8d91;text-align:center;font-weight:400;padding-top:6px'>이 메시지는 <a style='color:#1b74e4;text-decoration:none' href='mailto:kimkymack1@gmail.com' target='_blank'>kimkymack1@gmail.com</a> 주소로 전송되었습니다. <br>계정 보안을 위해 이 이메일은 전달하지 마세요. <a style='color:#1b74e4;text-decoration:none' href='https://www.facebook.com/help/213481848684090/' target='_blank'>더 알아보기</a></td>";
+	    msg+="<td align='center' style='font-size:12px;font-family:Roboto-Regular,Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;color:#8a8d91;text-align:center;font-weight:400;padding-top:6px'>이 메시지는 <a style='color:#1b74e4;text-decoration:none' href='mailto:testsmtp1773@gmail.com' target='_blank'>testsmtp1773@gmail.com</a> 주소로 전송되었습니다. <br>계정 보안을 위해 이 이메일은 전달하지 마세요. <a style='color:#1b74e4;text-decoration:none' href='https://www.facebook.com/help/213481848684090/' target='_blank'>더 알아보기</a></td>";
 	    msg+="</tr>";
 	    msg+="</tbody>";
 	    msg+="</table>";
@@ -267,7 +272,7 @@ public class UserService implements UserDetailsService {
 	    msg+="</div>";
 	    msg+="</div>";
 	    message.setText(msg, "UTF-8", "HTML");
-	    message.setFrom(new InternetAddress("kimkymack1@gmail.com", "Spring-facebook"));
+	    message.setFrom(new InternetAddress("testsmtp1773@gmail.com", "Spring-bbs"));
 		
 		javaMailSender.send(message);
 		return message;

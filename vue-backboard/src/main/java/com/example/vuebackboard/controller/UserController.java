@@ -91,11 +91,9 @@ public class UserController {
 		}
     	
     	String tmpPassword = userService.getTmpPassword();	// 랜덤의 비밀번호 생성
-		userService.updatePassword(tmpPassword, userDTO.getUserEmail());
+		userService.updatePassword(tmpPassword, userDTO.getUserEmail());	// 바뀐 비밀번호 db에 업데이트
 		userService.findPw(tmpPassword, userDTO.getUserEmail());	// 임시 비밀번호 메일로 전송
+		
 		return ResponseEntity.ok("가입하신 이메일로 임시 비밀번호를 전송하였습니다.");
-    	
-//		final UserDTO responseDTO = UserDTO.builder().userEmail(userDTO.getUserEmail()).build();
-//		return ResponseEntity.ok().body(responseDTO);
     }
 }
