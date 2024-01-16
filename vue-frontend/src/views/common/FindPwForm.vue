@@ -65,7 +65,16 @@ export default {
         return;
       }
 
-      this.form = { user_id: this.user_id };
+      if (this.user_email === "") {
+        this.active.user_email = true;
+        alert("이메일을 입력하세요.");
+        return;
+      }
+
+      this.form = {
+        userId: this.user_id,
+        userEmail: this.user_email
+      };
 
       try {
         const response = await findPw(this.form);
@@ -73,7 +82,6 @@ export default {
         // 비밀번호 찾기에 성공했을 경우
         if (response.status == 200) {
           alert("임의의 비밀번호를 가입하신 이메일로 전송하였습니다.");
-          this.$router.push("/login");
         } else {
           alert(response.data);
         }

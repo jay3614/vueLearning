@@ -178,3 +178,39 @@ footer{
 .galleryList ul > li > a:hover .screen::after {
 	opacity: 1;
 }
+
+
+/* [mypage css] */
+.myPage {
+  min-height: 400px;
+}
+
+nav.mypage-sidenav {
+    width: 170px;
+    float: left;
+    margin: 52px 40px 0px 0px;
+    font-family: musinsa-Medium, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    font-size: 14px;
+}
+
+.my-account h3 {
+	padding: 13px 0px 2px;
+	font-size: 24px;
+	font-weight: normal;
+	line-height: 40px;
+	color: #000;
+}
+
+.mypage-sidenav a {
+	display: flex;
+	margin-top: 2px;
+	font-size: 16px;
+	line-height: 40px;
+	color: rgb(110, 110, 110) !important;
+}
+
+.mypage-cont {
+    width: calc(100% - 210px);
+    padding: 0;
+    float: right;
+}

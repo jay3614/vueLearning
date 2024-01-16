@@ -25,9 +25,9 @@ const routes = [
     component: PageHome
   },
   {
-    path: '/about',
-    name: 'PageAbout',
-    component: () => import('../views/PageAbout.vue')
+    path: '/myPage',
+    name: 'MyPage',
+    component: () => import('../views/MyPage.vue')
   },
   {
     path: '/board/list',
