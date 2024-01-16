@@ -63,6 +63,12 @@ export default {
         return;
       }
 
+      if (this.user_email === "") {
+        this.active.user_email = true;
+        alert("이메일을 입력하세요.");
+        return;
+      }
+
       this.form = {
         userName: this.user_name,
         userEmail: this.user_email,
