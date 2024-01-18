@@ -127,7 +127,7 @@ public class UserService implements UserDetailsService {
 		
 		String msg = "";
 		message.addRecipients(RecipientType.TO, userEmail);
-		message.setSubject("[Spring-facebook] 임시 비밀번호 발급 안내");
+		message.setSubject("[Vue-게시판] 임시 비밀번호 발급 안내");
 		
 		msg+="<div>";
 	    msg+="<div>";
@@ -143,7 +143,7 @@ public class UserService implements UserDetailsService {
 	    msg+="<td height='20' style='line-height:20px' colspan='3'>&nbsp;</td>";
 	    msg+="</tr>";
 	    msg+="<tr>";
-	    msg+="<td height='1' colspan='3' style='line-height:1px'><span style='color:#ffffff;font-size:1px;opacity:0'>회원님의 Facebook 비밀번호 재설정 요청을 받았습니다.</span></td>";
+	    msg+="<td height='1' colspan='3' style='line-height:1px'><span style='color:#ffffff;font-size:1px;opacity:0'>회원님의 Vue 게시판 비밀번호 재설정 요청을 받았습니다.</span></td>";
 	    msg+="</tr>";
 	    msg+="<tr>";
 	    msg+="<td width='15' style='display:block;width:15px'>&nbsp;&nbsp;&nbsp;</td>";
@@ -154,7 +154,7 @@ public class UserService implements UserDetailsService {
 	    msg+="<td height='15' style='line-height:15px' colspan='3'>&nbsp;</td>";
 	    msg+="</tr>";
 	    msg+="<tr>";
-	    msg+="<td align='left' width='32' style='height:32;line-height:0px'><img width='32' src='https://static.xx.fbcdn.net/rsrc.php/v3/yc/r/I92GqZOkKcu.png' height='32' style='border:0'></td>";
+	    msg+="<td align='left' width='32' style='height:32;line-height:0px'><img src='https://i.imgur.com/WrfOiht.png' width='32' height='32' style='border:0'></td>";
 	    msg+="<td width='15' style='display:block;width:15px'>&nbsp;&nbsp;&nbsp;</td>";
 	    msg+="<td width='100%'><span style='font-family:Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;font-size:19px;line-height:32px;color:#1877f2'></span></td>";
 	    msg+="</tr>";
@@ -178,7 +178,7 @@ public class UserService implements UserDetailsService {
 	    msg+="<td><span style='font-family:Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;font-size:16px;line-height:21px;color:#141823'><span style='font-size:15px'>";
 	    msg+="<p></p>";
 	    msg+="<div style='margin-top:16px;margin-bottom:20px'>" + user.getUserName() + " 님, 안녕하세요!</div>";
-	    msg+="<div>회원님의 Facebook 비밀번호 재설정 요청을 " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + " 에 받았습니다.</div>발급된 임시 비밀번호를 통해 로그인 후 원하는 비밀번호로 변경하세요:<p></p>";
+	    msg+="<div>회원님의 Vue 게시판 비밀번호 재설정 요청을 " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + " 에 받았습니다.</div>발급된 임시 비밀번호를 통해 로그인 후 원하는 비밀번호로 변경하세요:<p></p>";
 	    msg+="<table border='0' cellspacing='0' cellpadding='0' style='border-collapse:collapse;width:max-content;margin-top:20px;margin-bottom:20px'>";
 	    msg+="<tbody>";
 	    msg+="<tr>";
@@ -211,7 +211,7 @@ public class UserService implements UserDetailsService {
 	    msg+="</tr>";
 	    msg+="</tbody>";
 	    msg+="</table><br>";
-	    msg+="<div><span style='color:#333333;font-weight:bold'>이 변동 요청을 하지 않으셨나요?</span></div>새 비밀번호를 요청하지 않으셨다면 <a href='https://www.facebook.com/login/recover/cancel/?n=735812&amp;id=100092282715924&amp;i=www' style='color:#0a7cff;text-decoration:none' target='_blank'>저희에게 알려주세요</a>.";
+	    msg+="<div><span style='color:#333333;font-weight:bold'>이 변동 요청을 하지 않으셨나요?</span></div>새 비밀번호를 요청하지 않으셨다면 <a href='#' style='color:#0a7cff;text-decoration:none' target='_blank'>저희에게 알려주세요</a>.";
 	    msg+="</span></span></td>";
 	    msg+="</tr>";
 	    msg+="<tr>";
@@ -238,13 +238,13 @@ public class UserService implements UserDetailsService {
 	    msg+="<td align='center' style='font-size:12px;font-family:Roboto-Regular,Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;color:#8a8d91;text-align:center;font-weight:400;padding-bottom:6px'>from</td>";
 	    msg+="</tr>";
 	    msg+="<tr>";
-	    msg+="<td align='center' style='font-size:12px;font-family:Roboto-Regular,Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;color:#8a8d91;text-align:center;font-weight:400;padding-top:6px;padding-bottom:6px'><img width='74' height='22' src='https://facebook.com/images/email/meta_logo.png' style='border:0'></td>";
+	    msg+="<td align='center' style='font-size:12px;font-family:Roboto-Regular,Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;color:#8a8d91;text-align:center;font-weight:400;padding-top:6px;padding-bottom:6px'><img width='74' height='22' src='https://i.imgur.com/WrfOiht.png' style='border:0'></td>";
 	    msg+="</tr>";
 	    msg+="<tr>";
-	    msg+="<td align='center' style='font-size:12px;font-family:Roboto-Regular,Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;color:#8a8d91;text-align:center;font-weight:400;padding-top:6px;padding-bottom:6px'>© Facebook. Meta Platforms, Inc., Attention: Community Support, 1 Facebook Way, Menlo Park, CA 94025</td>";
+	    msg+="<td align='center' style='font-size:12px;font-family:Roboto-Regular,Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;color:#8a8d91;text-align:center;font-weight:400;padding-top:6px;padding-bottom:6px'>© Vue-Learning Platforms, Inc., Attention: Community Support, 1 Way, Menlo Park, CA 94025</td>";
 	    msg+="</tr>";
 	    msg+="<tr>";
-	    msg+="<td align='center' style='font-size:12px;font-family:Roboto-Regular,Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;color:#8a8d91;text-align:center;font-weight:400;padding-top:6px'>이 메시지는 <a style='color:#1b74e4;text-decoration:none' href='mailto:testsmtp1773@gmail.com' target='_blank'>testsmtp1773@gmail.com</a> 주소로 전송되었습니다. <br>계정 보안을 위해 이 이메일은 전달하지 마세요. <a style='color:#1b74e4;text-decoration:none' href='https://www.facebook.com/help/213481848684090/' target='_blank'>더 알아보기</a></td>";
+	    msg+="<td align='center' style='font-size:12px;font-family:Roboto-Regular,Roboto,-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Lucida Grande,tahoma,verdana,arial,sans-serif;color:#8a8d91;text-align:center;font-weight:400;padding-top:6px'>이 메시지는 <a style='color:#1b74e4;text-decoration:none' href='mailto:testsmtp1773@gmail.com' target='_blank'>testsmtp1773@gmail.com</a> 주소로 전송되었습니다. <br>계정 보안을 위해 이 이메일은 전달하지 마세요. <a style='color:#1b74e4;text-decoration:none' href='https://vuejs.org/guide/introduction' target='_blank'>더 알아보기</a></td>";
 	    msg+="</tr>";
 	    msg+="</tbody>";
 	    msg+="</table>";
