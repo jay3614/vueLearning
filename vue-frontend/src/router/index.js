@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PageHome from '@/views/PageHome.vue'
+import MyPage from '@/views/MyPage.vue'
 import BoardList from '@/views/board/BoardList.vue'
 import BoardDetail from '@/views/board/BoardDetail.vue'
 import BoardWrite from '@/views/board/BoardWrite.vue'
@@ -9,7 +10,7 @@ import FindIdForm from '@/views/common/FindIdForm.vue'
 import FindPwForm from '@/views/common/FindPwForm.vue'
 import store from "@/vuex/store";
 
-const requireAuth = () => (from, to, next) => {   // never read라고 뜨지만 로그인 시 필요함
+const requireAuth = () => (from, to, next) => {
   const token = sessionStorage.getItem('user_token')
   if (token) {
     store.state.isLogin = true
@@ -27,7 +28,8 @@ const routes = [
   {
     path: '/myPage',
     name: 'MyPage',
-    component: () => import('../views/MyPage.vue')
+    component: MyPage,
+    beforeEnter: requireAuth()
   },
   {
     path: '/board/list',

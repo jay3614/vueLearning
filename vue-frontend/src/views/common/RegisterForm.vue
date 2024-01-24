@@ -29,6 +29,7 @@
             @input="resetActive('user_email')"
           />
         </div>
+        <p class="float-l clred">* 올바르지 않은 이메일 기재 시 아이디 및 비밀번호 찾기가 불가능합니다.</p>
       </div>
 
       <div class="row">
@@ -85,25 +86,25 @@ export default {
   methods: {
     async fnRegister() {
       if (this.user_id === "") {
-        // 아이디 검사
-        this.active.user_id = true;   // 입력칸 빈칸으로 제출 시 div 색 변환
+        // 아이디 공백 검사
+        this.active.user_id = true;   // 빈칸으로 제출 시 div 색 변환
         alert("ID를 입력하세요.");
         return;
       }
       if (this.user_email === "") {
-        // 이메일 검사
+        // 이메일 공백 검사
         this.active.user_email = true;
         alert("이메일을 입력하세요.");
         return;
       }
       if (this.user_pw === "") {
-        // 비밀번호 검사
+        // 비밀번호 공백 검사
         this.active.user_pw = true;
         alert("비밀번호를 입력하세요.");
         return;
       }
       if (this.user_name === "") {
-        // 이름 검사
+        // 이름 공백 검사
         this.active.user_name = true;
         alert("이름을 입력하세요.");
         return;
@@ -113,6 +114,12 @@ export default {
       const patten = /^[A-Za-z0-9_.-]+@[A-Za-z0-9-]+\.[A-Za-z0-9-]+/;
       if (!patten.test(this.user_email)) {
         alert("이메일 주소는 example@example.com 형식으로 정확히 입력해주세요.");
+        return;
+      }
+
+      // 비밀번호 길이 검사
+      if(this.user_pw.length < 4) {
+        alert("비밀번호는 4자리 이상이어야 합니다.");
         return;
       }
 
@@ -196,5 +203,9 @@ export default {
 
 .active {
   background-color: blanchedalmond;
+}
+
+.clred {
+  color: red;
 }
 </style>
