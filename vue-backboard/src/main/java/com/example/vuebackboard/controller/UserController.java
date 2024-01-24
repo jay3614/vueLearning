@@ -1,6 +1,7 @@
 package com.example.vuebackboard.controller;
 
 import com.example.vuebackboard.dto.UserDTO;
+import com.example.vuebackboard.entity.UserEntity;
 import com.example.vuebackboard.service.UserService;
 import com.example.vuebackboard.util.JwtUtil;
 
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -96,4 +98,23 @@ public class UserController {
 		
 		return ResponseEntity.ok("가입하신 이메일로 임시 비밀번호를 전송하였습니다.");
     }
+    
+    // 내 정보 가져오기
+    @PostMapping("/myInfo")
+    public ResponseEntity<Map<String, Object>> myInfo(@RequestBody UserDTO userDTO) {
+    	
+    	UserEntity userInfo = userService.findById(userDTO.getUserId());
+		
+		String userId = userInfo.getUserId();
+		String userName = userInfo.getUserName();
+		String userEmail = userInfo.getUserEmail();
+		
+		Map<String, Object> result = new HashMap<>();
+        result.put("user_id", userId);
+        result.put("user_name", userName);
+        result.put("user_email", userEmail);
+		
+		return ResponseEntity.ok().body(result);
+    }
+    
 }
