@@ -11,7 +11,7 @@ import FindPwForm from '@/views/common/FindPwForm.vue'
 import store from "@/vuex/store";
 
 const requireAuth = () => (from, to, next) => {
-  const token = sessionStorage.getItem('user_token')
+  const token = sessionStorage.getItem('user_token');
   if (token) {
     store.state.isLogin = true
     return next()

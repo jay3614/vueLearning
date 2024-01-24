@@ -25,8 +25,9 @@ export default {
       if (userInfoResponse.data.length === 0) {
         return 'notFound'
       } else {
-        sessionStorage.setItem('user_token', userInfoResponse.data.user_token)
-        sessionStorage.setItem('user_role', userInfoResponse.data.user_role)
+        sessionStorage.setItem('userId', userId);
+        sessionStorage.setItem('user_token', userInfoResponse.data.user_token);
+        sessionStorage.setItem('user_role', userInfoResponse.data.user_role);
         return userInfoResponse
       }
     } catch (err) {

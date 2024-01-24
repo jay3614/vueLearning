@@ -26,17 +26,17 @@
           <tbody>
             <tr>
               <th>아이디</th>
-              <td class="txt-left"><strong>[[${member.username}]]</strong></td>
+              <td class="txt-left"><strong>{{ user_id }}</strong></td>
             </tr>
 
             <tr>
               <th>이름</th>
-              <td class="txt-left"><strong>[[${member.name}]]</strong></td>
+              <td class="txt-left"><strong>{{ user_name }}</strong></td>
             </tr>
 
             <tr id="email-area">
               <th>이메일</th>
-              <td class="txt-left"><strong id="currentEmail"> [[${member.email}]]</strong>
+              <td class="txt-left"><strong id="currentEmail">{{ user_email }}</strong>
               </td>
             </tr>
           </tbody>
@@ -45,6 +45,58 @@
     </section>
   </div>
 </template>
+
+<script>
+import { userInfo } from "@/service/userInfoAPI";
+
+export default {
+  data() {
+    return {
+      user_id: "",
+      user_email: "",
+      user_name: ""
+    };
+  },
+  mounted() {
+    this.fnGetView();
+  },
+  methods: {
+    async fnGetView() {
+
+      this.form = {
+        // userId: this.user_id,
+        userId: sessionStorage.getItem("userId"),
+        userName: this.user_name,
+        userEmail: this.user_email
+      };
+
+      const response = await userInfo(this.form);
+
+      if (response.status == 200) {
+        this.user_id = response.data.user_id;
+        this.user_name = response.data.user_name;
+        this.user_email = response.data.user_email;
+      } else {
+        alert(response.data);
+      }
+      // this.$axios
+      //   .post(this.$serverUrl + "/user/myInfo")
+      //   .then((res) => {
+      //     this.user_id = res.data.user_id;
+      //     this.user_name = res.data.user_name;
+      //     this.user_email = res.data.user_email;
+      //     alert(this.user_id);
+      //   })
+      //   .catch((err) => {
+      //     if (err.message.indexOf("Network Error") > -1) {
+      //       alert("네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.");
+      //     }
+      //   });
+    }
+  }
+}
+</script>
+
 
 <style>
 * {
