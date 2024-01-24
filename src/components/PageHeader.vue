@@ -17,6 +17,7 @@
 export default {
   methods: {
     fnLogout() {
+      sessionStorage.removeItem("userId");
       sessionStorage.removeItem("user_token");
       sessionStorage.removeItem("user_role");
       location.reload();
