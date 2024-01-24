@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -275,7 +276,16 @@ public class UserService implements UserDetailsService {
 	    message.setFrom(new InternetAddress("testsmtp1773@gmail.com", "Spring-bbs"));
 		
 		javaMailSender.send(message);
-		return message;
-		
+		return message;	
 	}
+    
+    // id에 해당하는 사용자 객체 리턴
+ 	public UserEntity findById(String id) {
+ 		//
+ 		System.out.println("+++++++  서비스 호출됨  +++++++++");
+ 		//
+ 	    Optional<UserEntity> result = userRepository.findByUserId(id);
+ 	    
+ 	    return result.orElse(null);
+ 	}
 }
