@@ -3,12 +3,11 @@
     <div class="board-contents">
       <h3>{{ title }}</h3>
       <div>
-        <strong class="w3-large">{{ author }}</strong>
-        <br />
-        <span>{{ createdAt }}</span>
+        <strong class="w3-large p-r-10">{{ author }}</strong>
+        <span class="cl12">|</span><span class="p-l-10">{{ createdAt }}</span>
       </div>
     </div>
-    <div class="board-contents">
+    <div class="board-contents mh-200">
       <span>{{ contents }}</span>
     </div>
     <div class="common-buttons">
@@ -101,3 +100,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.mh-200 {
+  min-height: 200px;
+}
+</style>
