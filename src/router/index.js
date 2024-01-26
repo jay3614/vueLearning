@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PageHome from '@/views/PageHome.vue'
 import MyPage from '@/views/MyPage.vue'
+import UpdateInfo from '@/views/UpdateInfo.vue'
 import BoardList from '@/views/board/BoardList.vue'
 import BoardDetail from '@/views/board/BoardDetail.vue'
 import BoardWrite from '@/views/board/BoardWrite.vue'
@@ -29,6 +30,12 @@ const routes = [
     path: '/myPage',
     name: 'MyPage',
     component: MyPage,
+    beforeEnter: requireAuth()
+  },
+  {
+    path: '/updateInfo',
+    name: 'UpdateInfo',
+    component: UpdateInfo,
     beforeEnter: requireAuth()
   },
   {
