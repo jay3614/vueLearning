@@ -281,11 +281,22 @@ public class UserService implements UserDetailsService {
     
     // id에 해당하는 사용자 객체 리턴
  	public UserEntity findById(String id) {
- 		//
- 		System.out.println("+++++++  서비스 호출됨  +++++++++");
- 		//
  	    Optional<UserEntity> result = userRepository.findByUserId(id);
  	    
  	    return result.orElse(null);
  	}
+ 	
+ 	// 게시글 수정
+    public UserEntity update(UserDTO userDTO) {
+    	System.out.println("service 진입");
+    	
+    	String encPassword = passwordEncoder.encode(userDTO.getUserPw());
+    	
+    	UserEntity entity = userRepository.findByUserId2(userDTO.getUserId());
+        entity.setUserId(userDTO.getUserId());
+        entity.setUserEmail(userDTO.getUserEmail());
+        entity.setUserName(userDTO.getUserName());
+        entity.setUserPw(encPassword);
+        return userRepository.save(entity);
+    }
 }
