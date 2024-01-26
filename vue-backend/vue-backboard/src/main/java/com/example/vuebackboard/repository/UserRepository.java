@@ -11,6 +11,9 @@ import com.example.vuebackboard.entity.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	Optional<UserEntity> findByUserId(String userId);
 	
+	@Query(value = "SELECT * from tb_user where user_id=:user_id", nativeQuery = true)
+	UserEntity findByUserId2(@Param("user_id") String userId);
+	
 	// 유저 존재여부 확인
 	Boolean existsByUserId(String userId);
 	

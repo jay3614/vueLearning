@@ -23,9 +23,7 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
 
-    /**
-     * 게시글 목록 가져오기
-     */
+    // 게시글 목록 가져오기
     public Header<List<BoardDTO>> getBoardList(Pageable pageable) {
         List<BoardDTO> dtos = new ArrayList<>();
 
@@ -52,9 +50,7 @@ public class BoardService {
         return Header.OK(dtos, pagination);
     }
 
-    /**
-     * 게시글 가져오기
-     */
+    // 게시글 가져오기
     public BoardDTO getBoard(Long id) {
         BoardEntity entity = boardRepository.findById(id).orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
         return BoardDTO.builder()
@@ -66,9 +62,7 @@ public class BoardService {
                 .build();
     }
 
-    /**
-     * 게시글 등록
-     */
+    // 게시글 등록
     public BoardEntity create(BoardDTO boardDTO) {
         BoardEntity entity = BoardEntity.builder()
                 .title(boardDTO.getTitle())
@@ -79,9 +73,7 @@ public class BoardService {
         return boardRepository.save(entity);
     }
 
-    /**
-     * 게시글 수정
-     */
+    // 게시글 수정
     public BoardEntity update(BoardDTO boardDTO) {
         BoardEntity entity = boardRepository.findById(boardDTO.getIdx()).orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
         entity.setTitle(boardDTO.getTitle());
@@ -89,9 +81,7 @@ public class BoardService {
         return boardRepository.save(entity);
     }
 
-    /**
-     * 게시글 삭제
-     */
+    // 게시글 삭제
     public void delete(Long id) {
         BoardEntity entity = boardRepository.findById(id).orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
         boardRepository.delete(entity);
