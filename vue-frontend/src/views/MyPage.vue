@@ -41,6 +41,7 @@
             </tr>
           </tbody>
         </table>
+        <router-link to="/updateInfo" class="float-r btn btn-outline-dark">회원정보 변경하기</router-link>
       </div>
     </section>
   </div>
@@ -62,9 +63,7 @@ export default {
   },
   methods: {
     async fnGetView() {
-
       this.form = {
-        // userId: this.user_id,
         userId: sessionStorage.getItem("userId"),
         userName: this.user_name,
         userEmail: this.user_email
@@ -79,37 +78,13 @@ export default {
       } else {
         alert(response.data);
       }
-      // this.$axios
-      //   .post(this.$serverUrl + "/user/myInfo")
-      //   .then((res) => {
-      //     this.user_id = res.data.user_id;
-      //     this.user_name = res.data.user_name;
-      //     this.user_email = res.data.user_email;
-      //     alert(this.user_id);
-      //   })
-      //   .catch((err) => {
-      //     if (err.message.indexOf("Network Error") > -1) {
-      //       alert("네트워크가 원활하지 않습니다.\n잠시 후 다시 시도해주세요.");
-      //     }
-      //   });
     }
   }
 }
 </script>
 
-
 <style>
 * {
   font-family: musinsa-Medium, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif !important;
-}
-
-.test1 {
-  border: 1px solid black;
-  height: 200px;
-}
-
-.test2 {
-  border: 1px solid black;
-  height: 500px;
 }
 </style>
