@@ -80,6 +80,20 @@ export default {
       } else {
         alert(response.data);
       }
+      // 글 수정 시 기존 내용 가져오기
+      if (this.idx !== undefined) {
+        this.$axios.get(this.$serverUrl + '/board/' + this.idx, {
+          params: this.requestBody
+        }).then((res) => {
+          this.title = res.data.title;
+          this.author = res.data.author;
+          // db에 저장된 <br>태그를 개행문자로 변환
+          this.contents = res.data.contents.replace(/<br>/g, "\r\n");
+          this.created_at = res.data.created_at;
+        }).catch((err) => {
+          console.log(err)
+        })
+      }
     },
     fnList() {
       delete this.requestBody.idx;
@@ -116,6 +130,9 @@ export default {
         alert("내용을 입력하세요.");
         return;
       }
+
+      // 줄바꿈 db에 변환해서 저장
+      this.form.contents = this.contents.replace(/\n/g, "<br>");
 
       if (this.idx === undefined) {
         //INSERT
