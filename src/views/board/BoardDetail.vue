@@ -36,7 +36,9 @@
   </div>
 </template>
   
-  <script>
+<script>
+import { userInfo } from "@/service/userInfoAPI";
+
 export default {
   data() {
     //변수생성
@@ -48,10 +50,12 @@ export default {
       author: "",
       contents: "",
       createdAt: "",
+      userName: "",
     };
   },
   mounted() {
     this.fnGetView();
+    this.fnGetUserName();
   },
   methods: {
     fnGetView() {
@@ -71,6 +75,19 @@ export default {
           }
         });
     },
+    async fnGetUserName(){
+      this.form = {
+        userId: sessionStorage.getItem("userId"),
+      };
+
+      const response = await userInfo(this.form);
+
+      if (response.status == 200) {
+        this.userName = response.data.user_name;
+      } else {
+        alert("에러: " + response.data);
+      }
+    },
     fnList() {
       delete this.requestBody.idx;
       this.$router.push({
@@ -79,10 +96,15 @@ export default {
       });
     },
     fnUpdate() {
-      this.$router.push({
-        path: "./write",
-        query: this.requestBody,
-      });
+      if(this.author === this.userName) {
+        this.$router.push({
+          path: "./write",
+          query: this.requestBody,
+        });
+      }else {
+        alert("작성자 본인이 아닙니다.");
+        return
+      }
     },
     fnDelete() {
       if (!confirm("삭제하시겠습니까?")) return;
@@ -103,6 +125,6 @@ export default {
 
 <style scoped>
 .mh-200 {
-  min-height: 200px;
+  min-height: 300px;
 }
 </style>

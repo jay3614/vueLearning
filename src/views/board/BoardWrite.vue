@@ -3,26 +3,29 @@
     <div class="board-contents">
       <input
         type="text"
+        :class="{ active: active.title }"
         v-model="title"
         class="w3-input w3-border"
         placeholder="제목을 입력해주세요."
+        @input="resetActive('title')"
       />
       <input
         type="text"
         v-model="author"
         class="w3-input w3-border"
-        placeholder="작성자를 입력해주세요."
         v-if="idx === undefined"
+        readonly
       />
     </div>
     <div class="board-contents">
       <textarea
-        id=""
         cols="30"
         rows="10"
-        v-model="contents"
         class="w3-input w3-border"
+        :class="{ active: active.contents }"
+        v-model="contents"
         style="resize: none"
+        @input="resetActive('contents')"
       >
       </textarea>
     </div>
@@ -45,10 +48,11 @@
   </div>
 </template>
   
-  <script>
+<script>
+import { userInfo } from "@/service/userInfoAPI";
+
 export default {
   data() {
-    //변수생성
     return {
       requestBody: this.$route.query,
       idx: this.$route.query.idx,
@@ -57,27 +61,24 @@ export default {
       author: "",
       contents: "",
       created_at: "",
+      active: { title: false, contents: false},
     };
   },
   mounted() {
     this.fnGetView();
   },
   methods: {
-    fnGetView() {
-      if (this.idx !== undefined) {
-        this.$axios
-          .get(this.$serverUrl + "/board/" + this.idx, {
-            params: this.requestBody,
-          })
-          .then((res) => {
-            this.title = res.data.title;
-            this.author = res.data.author;
-            this.contents = res.data.contents;
-            this.created_at = res.data.created_at;
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+    async fnGetView() {
+      this.form = {
+        userId: sessionStorage.getItem("userId"),
+      };
+
+      const response = await userInfo(this.form);
+
+      if (response.status == 200) {
+        this.author = response.data.user_name;
+      } else {
+        alert(response.data);
       }
     },
     fnList() {
@@ -102,6 +103,19 @@ export default {
         contents: this.contents,
         author: this.author,
       };
+
+      if (this.title === "") {
+        // 제목 공백 검사
+        this.active.title = true;
+        alert("제목을 입력하세요.");
+        return;
+      }
+      if (this.contents === "") {
+        // 내용 공백 검사
+        this.active.contents = true;
+        alert("내용을 입력하세요.");
+        return;
+      }
 
       if (this.idx === undefined) {
         //INSERT
@@ -135,8 +149,15 @@ export default {
           });
       }
     },
+    resetActive(field) {
+      this.active[field] = false;
+    },
   },
 };
 </script>
-  <style scoped>
+
+<style scoped>
+.active {
+  background-color: blanchedalmond;
+}
 </style>
