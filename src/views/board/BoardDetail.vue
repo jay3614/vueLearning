@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="board-contents mh-200">
-      <span>{{ contents }}</span>
+      <span v-html="contents"></span>
     </div>
     <div class="common-buttons">
       <button
@@ -67,6 +67,7 @@ export default {
           this.title = res.data.title;
           this.author = res.data.author;
           this.contents = res.data.contents;
+          // alert();
           this.createdAt = res.data.createdAt;
         })
         .catch((err) => {
