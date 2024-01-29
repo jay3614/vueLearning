@@ -80,6 +80,19 @@ export default {
       } else {
         alert(response.data);
       }
+      // 글 수정 시 기존 내용 가져오기
+      if (this.idx !== undefined) {
+        this.$axios.get(this.$serverUrl + '/board/' + this.idx, {
+          params: this.requestBody
+        }).then((res) => {
+          this.title = res.data.title
+          this.author = res.data.author
+          this.contents = res.data.contents
+          this.created_at = res.data.created_at
+        }).catch((err) => {
+          console.log(err)
+        })
+      }
     },
     fnList() {
       delete this.requestBody.idx;
