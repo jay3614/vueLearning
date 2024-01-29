@@ -119,7 +119,6 @@ export default {
       }
     },
 
-    //
     fnUpdate() {
       let apiUrl = this.$serverUrl + "/user/updateInfo";
       this.form = {
@@ -137,12 +136,6 @@ export default {
         alert("ID를 입력하세요.");
         return;
       }
-      if (this.user_email === "") {
-        // 이메일 공백 검사
-        this.active.user_email = true;
-        alert("이메일을 입력하세요.");
-        return;
-      }
       if (this.user_pw === undefined) {
         // 비밀번호 공백 검사
         this.active.user_pw = true;
@@ -153,6 +146,12 @@ export default {
         // 이름 공백 검사
         this.active.user_name = true;
         alert("이름을 입력하세요.");
+        return;
+      }
+      if (this.user_email === "") {
+        // 이메일 공백 검사
+        this.active.user_email = true;
+        alert("이메일을 입력하세요.");
         return;
       }
 
@@ -179,7 +178,6 @@ export default {
         path: "./myPage"
       });
     },
-    //
 
     resetActive(field) {
       this.active[field] = false;
@@ -188,7 +186,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 * {
   font-family: musinsa-Medium, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif !important;
 }

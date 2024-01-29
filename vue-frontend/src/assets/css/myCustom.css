@@ -64,6 +64,7 @@ footer{
     width: 768px;
     margin: auto;
     text-align: left;
+		min-height: 500px;
 }
 
 .board-contents {
