@@ -33,3 +33,34 @@
 3. 상위 레포지토리에 변경 사항 push
   - git push origin main
   - push가 잘 안되면 --force 붙이기
+
+
+
+# 실제 구동 이미지
+  ## 메인 화면 
+  ![](https://i.imgur.com/zs9T7Av.png)
+  
+  <br><br><br>
+  
+  ## 로그인 화면 
+  ![](https://i.imgur.com/Q3n5nPI.jpg)
+  
+  <br><br><br>
+  
+  ## 회원가입 화면 
+  ![](https://i.imgur.com/6V2lHr5.png)
+
+  <br><br><br>
+  
+  ## 게시판 화면 
+  ![](https://i.imgur.com/twgfr6g.png)
+
+  <br><br><br>
+  
+  ## 게시판 상세 화면 
+  ![](https://i.imgur.com/y4cLpTT.png)
+
+  <br><br><br>
+  
+  ## 마이페이지 화면 
+  ![](https://i.imgur.com/twgfr6g.png)
