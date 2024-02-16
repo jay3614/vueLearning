@@ -57,7 +57,7 @@
   <br><br><br>
   
   ## 게시판 화면 
-  ![](https://i.imgur.com/twgfr6g.png)
+  ![](https://i.imgur.com/7Z9VYZ3.png)
 
   <br><br><br>
   
